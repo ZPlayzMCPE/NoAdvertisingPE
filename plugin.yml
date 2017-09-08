@@ -6,7 +6,7 @@ load: POSTWORLD
 authors: [Zeao]
 description: "Stop those Askers who ask for stuff on your server!"
 commands:
-  na:
+  nask:
     description: "Main command"
     usage: "/na <add|remove|list> [question]"
 permissions:
