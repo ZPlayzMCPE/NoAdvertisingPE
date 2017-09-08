@@ -1,0 +1,7 @@
+--- # Poggit-CI Manifest. Open the CI at https://poggit.pmmp.io/ci/ZPlayzMCPE/NoAskingPE
+branches:
+- master
+projects:
+  NoAskingPE:
+    path: ""
+...
