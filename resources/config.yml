@@ -6,7 +6,7 @@
 type: block
 # The message that will send
 # You can use {player} to mention their name
-message: '{RED}Do not try to advertising!'
+message: '{RED}Please do not ask this question!'
 # Blocked domain names
 domain:
   - ".me"
@@ -18,13 +18,13 @@ allowed.domain:
   - "pocketmine.net"
 # If true, it will detect a sign
 detect.sign: true
-# Lines that will change if player advertise on sign
+# Lines that will change if player asks on sign
 lines:
   - '============='
-  - 'No Advertising!'
+  - 'No asking!'
   - '============='
   - ''
-# The command that will protected from advertising
+# The command that will be protected from asking
 blocked.cmd:
   - "/me"
   - "/tell"
