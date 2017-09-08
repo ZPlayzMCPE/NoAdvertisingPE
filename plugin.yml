@@ -8,7 +8,7 @@ description: "Stop those Askers who ask for stuff on your server!"
 commands:
   nask:
     description: "Main command"
-    usage: "/na <add|remove|list> [question]"
+    usage: "/nask <add|remove|list> [question]"
 permissions:
   no.asking.pe:
     description: "Permission to perform command"
