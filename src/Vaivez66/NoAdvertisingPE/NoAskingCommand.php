@@ -10,16 +10,16 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\CommandExecutor;
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertisingCommand extends PluginBase implements CommandExecutor{
+class NoAskingCommand extends PluginBase implements CommandExecutor{
 
-    public function __construct(NoAdvertising $plugin){
+    public function __construct(NoAskingPE $plugin){
         $this->plugin = $plugin;
     }
 
     public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
         switch(strtolower($cmd->getName())){
-            case "na":
-                if($sender->hasPermission("no.advertising.pe")) {
+            case "nask":
+                if($sender->hasPermission("no.asking.pe")) {
                     if (isset($args[0])) {
                         switch ($args[0]) {
                             case "add":
