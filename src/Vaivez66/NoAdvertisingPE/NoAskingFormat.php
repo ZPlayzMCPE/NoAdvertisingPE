@@ -4,9 +4,9 @@ namespace Vaivez66\NoAdvertisingPE;
 
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertisingFormat{
+class NoAskingFormat{
 
-    public function __construct(NoAdvertising $plugin){
+    public function __construct(NoAskingPE $plugin){
         $this->plugin = $plugin;
     }
 
