@@ -8,9 +8,9 @@ use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\block\SignChangeEvent;
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertisingListener implements Listener{
+class NoAskingListener implements Listener{
 
-    public function __construct(NoAdvertising $plugin){
+    public function __construct(NoAskingPE $plugin){
         $this->plugin = $plugin;
     }
 
@@ -23,7 +23,7 @@ class NoAdvertisingListener implements Listener{
         $m = $this->plugin->getMsg();
         $m = str_replace("{player}", $p->getName(), $m);
         $m = $this->plugin->getFormat()->translate($m);
-        if($p->hasPermission('no.advertising.pe.bypass')){
+        if($p->hasPermission('no.asking.pe.bypass')){
             return;
         }
         foreach($allowed as $a){
@@ -55,7 +55,7 @@ class NoAdvertisingListener implements Listener{
             $lines = $event->getLines();
             $p = $event->getPlayer();
             $sign = $this->plugin->getSignLines();
-            if($p->hasPermission('no.advertising.pe.bypass')){
+            if($p->hasPermission('no.asking.pe.bypass')){
                 return;
             }
             foreach($lines as $line){
@@ -69,7 +69,7 @@ class NoAdvertisingListener implements Listener{
                         for ($i = 0; $i <= 3; $i++) {
                             $event->setLine($i, $sign[$i]);
                         }
-                        $p->sendMessage(TF::RED . 'Do not try to advertising, ' . $p->getName());
+                        $p->sendMessage(TF::RED . 'Please do not ask this question, ' . $p->getName());
                     }
                 }
             }
@@ -81,7 +81,7 @@ class NoAdvertisingListener implements Listener{
         $cmd = array_shift($msg);
         $p = $event->getPlayer();
         $m = implode(' ', $msg);
-        if ($p->hasPermission('no.advertising.pe.bypass')) {
+        if ($p->hasPermission('no.asking.pe.bypass')) {
             return;
         }
         foreach ($this->plugin->getAllowedDomain() as $a) {
@@ -93,7 +93,7 @@ class NoAdvertisingListener implements Listener{
             foreach ($this->plugin->getDomain() as $d) {
                 if (stripos($m, $d) !== false) {
                     $event->setCancelled(true);
-                    $p->sendMessage(TF::RED . 'Do not try to advertising with ' . $cmd . ', ' . $p->getName());
+                    $p->sendMessage(TF::RED . 'Please do not ask this question with ' . $cmd . ', ' . $p->getName());
                 }
             }
         }
