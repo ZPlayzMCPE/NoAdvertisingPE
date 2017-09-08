@@ -7,7 +7,7 @@ use pocketmine\Player;
 use pocketmine\utils\Config;
 use pocketmine\utils\TextFormat as TF;
 
-class NoAdvertising extends PluginBase{
+class NoAskingPE extends PluginBase{
 
     public $cfg;
     private $format;
@@ -16,7 +16,7 @@ class NoAdvertising extends PluginBase{
 	$this->saveDefaultConfig();
 	$this->format = new NoAdvertisingFormat($this);
 	$this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-	$this->getServer()->getLogger()->info(TF::GREEN . "NoAdvertisingPE is ready!");
+	$this->getServer()->getLogger()->info(TF::GREEN . "NoAskingPE is ready!");
 	$this->getServer()->getPluginManager()->registerEvents(new NoAdvertisingListener($this), $this);
 	$this->getCommand("na")->setExecutor(new NoAdvertisingCommand($this));
     }
@@ -88,7 +88,7 @@ class NoAdvertising extends PluginBase{
     public function addDomain($p, $name){
 	$domain = $this->getDomain();
 	if(in_array($name, $domain)){
-	    $p->sendMessage(TF::RED . "That domain already exist!");
+	    $p->sendMessage(TF::RED . "That question already exist!");
 	    return false;
 	}
 	$domain[] = $name;
@@ -108,7 +108,7 @@ class NoAdvertising extends PluginBase{
     	$domain = $this->getDomain();
     	$key = array_search($name, $domain);
     	if($key === false){
-    	    $p->sendMessage(TF::RED . "That domain does not exist!");
+    	    $p->sendMessage(TF::RED . "That question does not exist!");
     	    return false;
     	}
     	unset($domain[$key]);
@@ -125,7 +125,7 @@ class NoAdvertising extends PluginBase{
 
     public function listDomain($p){
 	$domain = implode("\n" . TF::YELLOW . "- ", $this->getDomain());
-	$p->sendMessage(TF::YELLOW . "Available domain:");
+	$p->sendMessage(TF::YELLOW . "Available questions:");
 	$p->sendMessage(TF::YELLOW . "- " . $domain);
 	return true;
     }
@@ -149,7 +149,7 @@ class NoAdvertising extends PluginBase{
     }
 	
     public function onDisable(){
-	$this->getServer()->getLogger()->info(TF::RED . "NoAdvertisingPE was disabled!");
+	$this->getServer()->getLogger()->info(TF::RED . "NoAskingPE was disabled!");
     }
 
 }
