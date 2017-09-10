@@ -18,24 +18,24 @@ class NoAskingPE extends PluginBase{
 	$this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
 	$this->getServer()->getLogger()->info(TF::GREEN . "NoAskingPE is ready!");
 	$this->getServer()->getPluginManager()->registerEvents(new NoAskingListener($this), $this);
-	$this->getCommand("na")->setExecutor(new NoAskingCommand($this));
+	$this->getCommand("nask")->setExecutor(new NoAskingCommand($this));
     }
 
     /**
      * @return array
      */
 
-    public function getDomain(){
-	$domain = (array) $this->cfg->get("domain");
-	return $domain;
+    public function getQuestion(){
+	$domain = (array) $this->cfg->get("question");
+	return $question;
     }
 
     /**
      * @return array
      */
 
-    public function getAllowedDomain(){
-	$allowed = (array) $this->cfg->get("allowed.domain");
+    public function getAllowedQuestion(){
+	$allowed = (array) $this->cfg->get("allowed.question");
 	return $allowed;
     }
 
@@ -85,14 +85,14 @@ class NoAskingPE extends PluginBase{
      * @return bool
      */
 
-    public function addDomain($p, $name){
-	$domain = $this->getDomain();
-	if(in_array($name, $domain)){
-	    $p->sendMessage(TF::RED . "That question already exist!");
+    public function addQuestion($p, $name){
+	$question = $this->getQuestion();
+	if(in_array($name, $question)){
+	    $p->sendMessage(TF::RED . "That question already exists!");
 	    return false;
 	}
-	$domain[] = $name;
-	$this->cfg->set("domain", $domain);
+	$question[] = $name;
+	$this->cfg->set("question", $question);
 	$this->cfg->save();
 	$p->sendMessage(TF::GREEN . "Successfully added " . $name . " into config");
 	return true;
@@ -104,15 +104,15 @@ class NoAskingPE extends PluginBase{
      * @return bool
      */
 
-    public function removeDomain($p, $name){
-    	$domain = $this->getDomain();
-    	$key = array_search($name, $domain);
+    public function removeQuestion($p, $name){
+    	$question = $this->getQuestion();
+    	$key = array_search($name, $question);
     	if($key === false){
     	    $p->sendMessage(TF::RED . "That question does not exist!");
     	    return false;
     	}
-    	unset($domain[$key]);
-    	$this->cfg->set("domain", array_values($domain));
+    	unset($question[$key]);
+    	$this->cfg->set("question", array_values($question));
     	$this->cfg->save();
     	$p->sendMessage(TF::GREEN . "Successfully removed " . $name . " from config");
     	return true;
@@ -123,10 +123,10 @@ class NoAskingPE extends PluginBase{
      * @return bool
      */
 
-    public function listDomain($p){
-	$domain = implode("\n" . TF::YELLOW . "- ", $this->getDomain());
-	$p->sendMessage(TF::YELLOW . "Available questions:");
-	$p->sendMessage(TF::YELLOW . "- " . $domain);
+    public function listQuestion($p){
+	$question = implode("§a\n" . TF::YELLOW . "§2- ", $this->getQuestion());
+	$p->sendMessage(TF::YELLOW . "§7Available §eQuestions:");
+	$p->sendMessage(TF::YELLOW . "- " . $question);
 	return true;
     }
 
