@@ -26,7 +26,7 @@ class NoAskingPE extends PluginBase{
      */
 
     public function getQuestion(){
-	$domain = (array) $this->cfg->get("question");
+	$question = (array) $this->cfg->get("question");
 	return $question;
     }
 
