@@ -17,8 +17,8 @@ class NoAskingListener implements Listener{
     public function onChat(PlayerChatEvent $event){
         $p = $event->getPlayer();
         $msg = $event->getMessage();
-        $domain = $this->plugin->getDomain();
-        $allowed = $this->plugin->getAllowedDomain();
+        $question = $this->plugin->getQuestion();
+        $allowed = $this->plugin->getAllowedQuestion();
         $type = $this->plugin->getType();
         $m = $this->plugin->getMsg();
         $m = str_replace("{player}", $p->getName(), $m);
@@ -31,8 +31,8 @@ class NoAskingListener implements Listener{
                 return;
             }
         }
-        foreach($domain as $d){
-            if((stripos($msg, $d) !== false) || (preg_match("/[0-9]+\.[0-9]+/i", $msg))){
+        foreach($question as $q){
+            if((stripos($msg, $q) !== false) || (preg_match("/[0-9]+\.[0-9]+/i", $msg))){
                 switch($type){
                     case "broadcast":
                         $event->setCancelled(true);
@@ -59,13 +59,13 @@ class NoAskingListener implements Listener{
                 return;
             }
             foreach($lines as $line){
-                foreach($this->plugin->getAllowedDomain() as $a){
+                foreach($this->plugin->getAllowedQuestion() as $a){
                     if(stripos($line, $a) !== false){
                         return;
                     }
                 }
-                foreach($this->plugin->getDomain() as $d){
-                    if(stripos($line, $d) !== false) {
+                foreach($this->plugin->getQuestion() as $q){
+                    if(stripos($line, $q) !== false) {
                         for ($i = 0; $i <= 3; $i++) {
                             $event->setLine($i, $sign[$i]);
                         }
@@ -84,14 +84,14 @@ class NoAskingListener implements Listener{
         if ($p->hasPermission('no.asking.pe.bypass')) {
             return;
         }
-        foreach ($this->plugin->getAllowedDomain() as $a) {
+        foreach ($this->plugin->getAllowedQuestion() as $a) {
             if (stripos($m, $a) !== false) {
                 return;
             }
         }
         if(in_array($cmd, $this->plugin->getBlockedCmd())) {
-            foreach ($this->plugin->getDomain() as $d) {
-                if (stripos($m, $d) !== false) {
+            foreach ($this->plugin->getQuestion() as $q) {
+                if (stripos($m, $q) !== false) {
                     $event->setCancelled(true);
                     $p->sendMessage(TF::RED . 'Please do not ask this question with ' . $cmd . ', ' . $p->getName());
                 }
