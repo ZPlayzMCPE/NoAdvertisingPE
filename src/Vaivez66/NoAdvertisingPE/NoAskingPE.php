@@ -14,11 +14,11 @@ class NoAskingPE extends PluginBase{
 
     public function onEnable(){
 	$this->saveDefaultConfig();
-	$this->format = new NoAdvertisingFormat($this);
+	$this->format = new NoAskingFormat($this);
 	$this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
 	$this->getServer()->getLogger()->info(TF::GREEN . "NoAskingPE is ready!");
-	$this->getServer()->getPluginManager()->registerEvents(new NoAdvertisingListener($this), $this);
-	$this->getCommand("na")->setExecutor(new NoAdvertisingCommand($this));
+	$this->getServer()->getPluginManager()->registerEvents(new NoAskingListener($this), $this);
+	$this->getCommand("na")->setExecutor(new NoAskingCommand($this));
     }
 
     /**
