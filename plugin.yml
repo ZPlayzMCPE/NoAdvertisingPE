@@ -1,9 +1,9 @@
 name: NoAskingPE
 main: Vaivez66\NoAdvertisingPE\NoAskingPE
-version: 1.0.0
-api: [3.0.0-ALPHA6, 3.0.1]
+version: 1.0.1
+api: [3.0.0-ALPHA6, 3.0.1, 3.0.0, 3.0.0-ALPHA7]
 load: POSTWORLD
-authors: [Zeao]
+author: [Zeao]
 description: "Stop those Askers who ask for stuff on your server!"
 commands:
   nask:
@@ -15,4 +15,4 @@ permissions:
     default: op
   no.asking.pe.bypass:
     description: "Permission to bypass from blocking"
-    default: false
+    default: op
