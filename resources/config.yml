@@ -7,15 +7,15 @@ type: block
 # The message that will send
 # You can use {player} to mention their name
 message: '{RED}Please do not ask this question!'
-# Blocked domain names
-domain:
-  - ".me"
-  - ".com"
-  - ".net"
-# The domains that allowed to use
-allowed.domain:
-  - "yourserver.com"
-  - "pocketmine.net"
+# Blocked questions
+questions:
+  - "Can i be staff"
+  - "Can I be op"
+  - "I want op"
+# The questions that are allowed to be used
+allowed.questions:
+  - "Can I have yt rank"
+  - "Can I join your faction?"
 # If true, it will detect a sign
 detect.sign: true
 # Lines that will change if player asks on sign
