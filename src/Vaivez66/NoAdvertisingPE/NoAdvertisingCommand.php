@@ -16,8 +16,8 @@ class NoAdvertisingCommand extends PluginBase implements CommandExecutor{
         $this->plugin = $plugin;
     }
 
-    public function onCommand(CommandSender $sender, Command $cmd, $label, array $args){
-        switch(strtolower($cmd->getName())){
+    public function onCommand(CommandSender $sender, Command $command, string $label, array $args) : bool{
+        switch(strtolower($command->getName())){
             case "na":
                 if($sender->hasPermission("no.advertising.pe")) {
                     if (isset($args[0])) {
