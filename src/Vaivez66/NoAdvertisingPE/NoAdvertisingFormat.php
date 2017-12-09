@@ -2,7 +2,7 @@
 
 namespace Vaivez66\NoAdvertisingPE;
 
-use pocketmine\utils\TextFormat as TF;
+use pocketmine\utils\TextFormat;
 
 class NoAdvertisingFormat{
 
