@@ -6,7 +6,7 @@ use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
 use pocketmine\event\player\PlayerCommandPreprocessEvent;
 use pocketmine\event\block\SignChangeEvent;
-use pocketmine\utils\TextFormat as TF;
+use pocketmine\utils\TextFormat;
 
 class NoAdvertisingListener implements Listener{
 
@@ -24,11 +24,11 @@ class NoAdvertisingListener implements Listener{
         $m = str_replace("{player}", $p->getName(), $m);
         $m = $this->plugin->getFormat()->translate($m);
         if($p->hasPermission('no.advertising.pe.bypass')){
-            return;
+            return true;
         }
         foreach($allowed as $a){
             if(stripos($msg, $a) !== false){
-                return;
+                return true;
             }
         }
         foreach($domain as $d){
@@ -56,12 +56,12 @@ class NoAdvertisingListener implements Listener{
             $p = $event->getPlayer();
             $sign = $this->plugin->getSignLines();
             if($p->hasPermission('no.advertising.pe.bypass')){
-                return;
+                return true;
             }
             foreach($lines as $line){
                 foreach($this->plugin->getAllowedDomain() as $a){
                     if(stripos($line, $a) !== false){
-                        return;
+                        return true;
                     }
                 }
                 foreach($this->plugin->getDomain() as $d){
@@ -82,11 +82,11 @@ class NoAdvertisingListener implements Listener{
         $p = $event->getPlayer();
         $m = implode(' ', $msg);
         if ($p->hasPermission('no.advertising.pe.bypass')) {
-            return;
+            return true;
         }
         foreach ($this->plugin->getAllowedDomain() as $a) {
             if (stripos($m, $a) !== false) {
-                return;
+                return true;
             }
         }
         if(in_array($cmd, $this->plugin->getBlockedCmd())) {
