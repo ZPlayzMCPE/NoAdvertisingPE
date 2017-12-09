@@ -5,7 +5,7 @@ namespace Vaivez66\NoAdvertisingPE;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Player;
 use pocketmine\utils\Config;
-use pocketmine\utils\TextFormat as TF;
+use pocketmine\utils\TextFormat;
 
 class NoAdvertising extends PluginBase{
 
@@ -16,7 +16,7 @@ class NoAdvertising extends PluginBase{
 	$this->saveDefaultConfig();
 	$this->format = new NoAdvertisingFormat($this);
 	$this->cfg = new Config($this->getDataFolder() . "config.yml", Config::YAML, array());
-	$this->getServer()->getLogger()->info(TF::GREEN . "NoAdvertisingPE is ready!");
+	$this->getServer()->getLogger()->info(TF::GREEN . "NoAdvertisingPE is enabled!");
 	$this->getServer()->getPluginManager()->registerEvents(new NoAdvertisingListener($this), $this);
 	$this->getCommand("na")->setExecutor(new NoAdvertisingCommand($this));
     }
