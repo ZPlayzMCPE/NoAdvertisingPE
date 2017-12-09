@@ -8,7 +8,7 @@ use pocketmine\Player;
 use pocketmine\command\Command;
 use pocketmine\command\CommandSender;
 use pocketmine\command\CommandExecutor;
-use pocketmine\utils\TextFormat as TF;
+use pocketmine\utils\TextFormat;
 
 class NoAdvertisingCommand extends PluginBase implements CommandExecutor{
 
